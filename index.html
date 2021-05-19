@@ -41,7 +41,8 @@
                 <div class="agenda">
                     <h3>NOTE</h3>
                     <ul class="list-group nota">
-                        <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agenda">{{nota}}
+                        <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agenda">
+                            <span id="editabile" class="p-2" contenteditable>{{nota}}</span>
                             <div>
                                 <i class="fas fa-check me-3" @click="addCompletata(index)"></i> 
                                 <i class="fas fa-trash" @click="removeNota(index)"></i>

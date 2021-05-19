@@ -38,8 +38,10 @@ const app = new Vue ({
 
         // Cliccando sull'icona "check" l'utente sposta nella sezione completate una task
         addCompletata(index){
-          
-          this.agendaCompletate.unshift(this.agenda[index]);
+          // Resa modificabile nota
+          index = document.getElementById("editabile").innerText;
+          console.log(index);
+          this.agendaCompletate.unshift(index);
           this.agenda.splice(index,1)
 
         },
@@ -63,7 +65,9 @@ const app = new Vue ({
             }else{
                 alert("Devi inserire S se vuoi eliminare definitivamente la nota")
             } 
-        }
+        },
+
+
     },
 
     // collegato il tasto 'enter' alla funzione addNote
@@ -77,5 +81,6 @@ const app = new Vue ({
         })
     },
 })
+
 
 
