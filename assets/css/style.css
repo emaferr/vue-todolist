@@ -1,5 +1,19 @@
-.add_nota, .agenda{
+.body{
+    height: 100vh;
+    padding: 3rem;
+}
+
+.add_nota {
     width: 50%;
     margin: auto;
 }
+
+.agenda , .agenda_completate , .cestino {
+    height: 500px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem 2rem;
+}
+
+
 

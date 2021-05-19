@@ -68,9 +68,6 @@ const app = new Vue ({
             } 
         },
 
-        
-
-
     },
 
     // collegato il tasto 'enter' alla funzione addNote
@@ -80,17 +77,18 @@ const app = new Vue ({
             if (tasto === "Enter") {
                 this.addNota();
             }
-        }),
+        });
 
-        document.getElementById("editabile").addEventListener("keyup", (e) => {
-            let tasto = e.key;
-            let notaModificata = document.getElementById("editabile").innerText;
+        // document.getElementById('editabile').addEventListener("keyup", (e) => {
+        //     let tasto = e.key;
+        //     let notaModificata = document.getElementById("editabile").innerText;
         
-            if (tasto === "Enter"){
-                alert('La tua nota è stata modificata! Nuova nota: ' + notaModificata);
+        //     if (tasto === "Enter"){
+        //         alert('La tua nota è stata modificata! Nuova nota: ' + notaModificata);
                 
-            }
-        })
+        //     }
+        // })
+        // Non funziona correttamente !!!
 
     },
 })

@@ -26,60 +26,68 @@
 
       </head>
 
-      <body>
+      <body class="font-monospace bg-light bg-gradient ">
 
-        <header></header>
+        <header class="text-center">
+            <h1 class="my-3">La mia agenda</h1>
+        </header>
 
         <main>
             <div id="app">
 
-                <div class="input-group add_nota">
-                    <input id="nuova_nota" v-model="nuovaNota" type="text" class="form-control" placeholder="Inserisci nuova nota" >
+                <div class="input-group add_nota mt-5 mb-3">
+                    <input id="nuova_nota" v-model="nuovaNota" type="text" class="form-control" placeholder="Inserisci un nuovo promemoria" >
                     <button class="btn btn-outline-secondary" @click="addNota">ADD</button>
                 </div>
 
-                <div class="agenda">
-                    <h3>NOTE</h3>
-                    <ul class="list-group nota">
-                        <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agenda">
-                            <span @keydown.enter.exact.prevent id="editabile" class="p-2" contenteditable>{{nota}}</span>
-                            <div>
-                                <i class="fas fa-check me-3" @click="addCompletata(index)"></i> 
-                                <i class="fas fa-trash" @click="removeNota(index)"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <div class="row">
 
-                <div class="agenda mt-5">
-                    <h3>Note completate</h3>
-                    <ul class="list-group nota">
-                        <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agendaCompletate">{{nota}}
-                            <div>
-                                <i class="fas fa-undo-alt" @click="undoNota(index)"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="agenda bg-secondary bg-gradient col text-wrap">
+                        <h3 class="text-center">Promemoria</h3>
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agenda">
+                                <span @keydown.enter.exact.prevent id="editabile" class="p-2" contenteditable>{{nota}}</span>
+                                <div class="mx-2 text-nowrap d-flex align-items-center">
+                                    <i class="fas fa-check me-3" @click="addCompletata(index)"></i> 
+                                    <i class="fas fa-trash" @click="removeNota(index)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="no_class" v-if="agenda.length === 0">
+                            <p class="list-group-item">Nessun promemoria rimasto</p>
+                        </div>
+                    </div>
+    
+                    <div class="agenda_completate bg-secondary bg-gradient col text-wrap">
+                        <h3 class="text-center">Completati</h3>
+                        <ul class="list-group nota">
+                            <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agendaCompletate">{{nota}}
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-undo-alt mx-2 " @click="undoNota(index)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="cestino bg-secondary bg-gradient col text-wrap">
+                        <h3 class="text-center">Cestino</h3>
+                        <ul class="list-group nota">
+                            <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in cestino">{{nota}}
+                                <div class="mx-2 text-nowrap d-flex align-items-center">
+                                    <i class="fas fa-trash-restore me-3" @click="undoDelete(index)"></i>
+                                    <i class="fas fa-times" @click="deleteNota(index)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="agenda mt-5">
-                    <h3>CESTINO</h3>
-                    <ul class="list-group nota">
-                        <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in cestino">{{nota}}
-                            <div>
-                                <i class="fas fa-trash-restore me-3" @click="undoDelete(index)"></i>
-                                <i class="fas fa-times" @click="deleteNota(index)"></i>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
 
             </div>
+
         </main>
 
-        <footer></footer>
-
-        <!-- Optional JavaScript; choose one of the two! -->
+        <!-- My JS -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./assets/js/app.js"></script>
 
