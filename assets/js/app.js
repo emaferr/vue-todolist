@@ -4,17 +4,19 @@ const app = new Vue ({
 
     data: {
 
-        // La nostra todo list avrá alcune tasks di default predefinite
+        agendaCompletate: [],
+        cestino:[],
+
         nuovaNota:"",
+
+        // La nostra todo list avrá alcune tasks di default predefinite
         agenda: [
             'chiamare il dentista per fissare appuntamento!',
             'aggiungere una prenotazione al corso di yoga ',
             'completare esercizio Boolean'
         ],
 
-        agendaCompletate: [],
     },
-
 
     methods: {
 
@@ -28,16 +30,46 @@ const app = new Vue ({
             }
         },
 
-        // Cliccando sull'icona "cestino" l'utente puó cancellare una task
+        // Cliccando sull'icona "cestino" l'utente sposta nel cestino una task
         removeNota(index){
+            this.cestino.unshift(this.agenda[index]);
             this.agenda.splice(index,1)
         },
 
+        // Cliccando sull'icona "check" l'utente sposta nella sezione completate una task
+        addCompletata(index){
+          
+          this.agendaCompletate.unshift(this.agenda[index]);
+          this.agenda.splice(index,1)
 
-        addCompletata(){
-          console.log(this.agenda);
-            
         },
+
+        // Cliccando sull'icona "undo" l'utente riporta nella sezione originale una task
+        undoNota(index){
+            this.agenda.unshift(this.agendaCompletate[index]);
+            this.agendaCompletate.splice(index,1)
+        },
+
+        // Cliccando sull'icona "X" l'utente elimina definitivamente una task
+        deleteNota(index){
+            let eliminazione = prompt('Se sei sicuro di voler eliminare la nota digita  S ').toLocaleUpperCase();
+            if (eliminazione === 'S'){
+                this.cestino.splice(index,1)
+            }else{
+                alert("Devi inserire S se vuoi eliminare definitivamente la nota")
+            } 
+        }
+    },
+
+    // collegato il tasto 'enter' alla funzione addNote
+    mounted() {
+        document.addEventListener("keyup", (e) => {
+            let tasto = e.key;
+            console.log(tasto);
+            if (tasto === "Enter") {
+                this.addNota();
+            }
+        })
     },
 })
 
