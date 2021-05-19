@@ -28,6 +28,7 @@ const app = new Vue ({
                 this.agenda.push(this.nuovaNota);
                 this.nuovaNota='';
             }
+
         },
 
         // Cliccando sull'icona "cestino" l'utente sposta nel cestino una task
@@ -40,7 +41,7 @@ const app = new Vue ({
         addCompletata(index){
           // Resa modificabile nota
           index = document.getElementById("editabile").innerText;
-          console.log(index);
+        
           this.agendaCompletate.unshift(index);
           this.agenda.splice(index,1)
 
@@ -67,20 +68,34 @@ const app = new Vue ({
             } 
         },
 
+        
+
 
     },
 
     // collegato il tasto 'enter' alla funzione addNote
     mounted() {
-        document.addEventListener("keyup", (e) => {
+        document.getElementById("nuova_nota").addEventListener("keyup", (e) => {
             let tasto = e.key;
-            console.log(tasto);
             if (tasto === "Enter") {
                 this.addNota();
             }
+        }),
+
+        document.getElementById("editabile").addEventListener("keyup", (e) => {
+            let tasto = e.key;
+            let notaModificata = document.getElementById("editabile").innerText;
+        
+            if (tasto === "Enter"){
+                alert('La tua nota è stata modificata! Nuova nota: ' + notaModificata);
+                
+            }
         })
+
     },
 })
+
+
 
 
 
