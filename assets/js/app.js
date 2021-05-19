@@ -50,6 +50,11 @@ const app = new Vue ({
             this.agendaCompletate.splice(index,1)
         },
 
+        undoDelete(index){
+            this.agenda.push(this.cestino[index])
+            this.cestino.splice(index,1)
+        },
+
         // Cliccando sull'icona "X" l'utente elimina definitivamente una task
         deleteNota(index){
             let eliminazione = prompt('Se sei sicuro di voler eliminare la nota digita  S ').toLocaleUpperCase();
