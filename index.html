@@ -46,7 +46,7 @@
                         <h3 class="text-center">Promemoria</h3>
                         <ul class="list-group mt-3">
                             <li class="list-group-item d-flex justify-content-between" v-for="(nota, index) in agenda">
-                                <span @keydown.enter.exact.prevent id="editabile" class="p-2" contenteditable>{{nota}}</span>
+                                <span @keydown.enter.exact.prevent @keydown.enter='addCompletata' id="editabile" class="p-2" contenteditable>{{nota}}</span>
                                 <div class="mx-2 text-nowrap d-flex align-items-center">
                                     <i class="fas fa-check me-3" @click="addCompletata(index)"></i> 
                                     <i class="fas fa-trash" @click="removeNota(index)"></i>
