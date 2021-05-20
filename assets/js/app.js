@@ -76,18 +76,6 @@ const app = new Vue ({
                 this.addNota();
             }
         });
-
-        // document.getElementById('editabile').addEventListener("keyup", (e) => {
-        //     let tasto = e.key;
-        //     let notaModificata = document.getElementById("editabile").innerText;
-        
-        //     if (tasto === "Enter"){
-        //         alert('La tua nota è stata modificata! Nuova nota: ' + notaModificata);
-                
-        //     }
-        // })
-        // Non funziona correttamente !!!
-
     },
 })
 
