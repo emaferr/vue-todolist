@@ -60,12 +60,10 @@ const app = new Vue ({
 
         // Cliccando sull'icona "X" l'utente elimina definitivamente una task
         deleteNota(index){
-            let eliminazione = prompt('Se sei sicuro di voler eliminare la nota digita  S ').toLocaleUpperCase();
-            if (eliminazione === 'S'){
+            let eliminazione = confirm('Se sei sicuro di voler eliminare il promemoria?');
+            if (eliminazione === true){
                 this.cestino.splice(index,1)
-            }else{
-                alert("Devi inserire S se vuoi eliminare definitivamente la nota")
-            } 
+            }
         },
 
     },
